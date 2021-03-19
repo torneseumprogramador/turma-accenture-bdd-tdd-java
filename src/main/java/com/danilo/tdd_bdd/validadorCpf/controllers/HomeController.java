@@ -10,4 +10,9 @@ public class HomeController {
   public String index(){
     return "home/index";
   }
+
+  @GetMapping("/valida-cpf")
+  public String validaCpf(){
+    return "home/cpfValidado";
+  }
 }
