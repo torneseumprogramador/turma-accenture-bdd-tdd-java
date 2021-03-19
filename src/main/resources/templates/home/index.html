@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Validador de CPF</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script>
+      const validaCampos = function(){
+        if(document.getElementById("nome").value == ""){
+          document.getElementById("erro").innerHTML = "Preencha o campo nome";
+          document.getElementById("nome").focus();
+          document.getElementById("erro").style.display = "block";
+          return false;
+        }
+
+        if(document.getElementById("cpf").value == ""){
+          document.getElementById("erro").innerHTML = "Preencha o campo cpf";
+          document.getElementById("erro").style.display = "block";
+          document.getElementById("cpf").focus();
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+  </head>
+<body class="container">
+  <br>
+  <br>
+  <br>
+  <h1>Validador CPF</h1>
+  <hr>
+  <form action="/valida-cpf" method="GET" onsubmit="return validaCampos()">
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome">
+    </div>
+    <div class="form-group">
+      <label for="cpf">CPF</label>
+      <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite o seu CPF">
+    </div>
+
+    <br>
+    <div class="alert alert-danger" style="display: none;" id="erro" role="alert">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+
+</body>
+</html>
