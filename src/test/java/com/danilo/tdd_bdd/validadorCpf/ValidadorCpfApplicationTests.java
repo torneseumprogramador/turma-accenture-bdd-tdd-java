@@ -15,7 +15,49 @@ class ValidadorCpfApplicationTests {
 		assertEquals(true, isCPF("94622036010"));
 	}
 
+	@Test
+	void fazendoTesteDeCpfInvalido() {
+		assertEquals(false, isCPF("94622036011"));
+	}
+
+	@Test
+	void fazendoTesteDeCpfComDigitoAMenos() {
+		assertEquals(false, isCPF("9462203602"));
+	}
+
+	@Test
+	void fazendoTesteDeCpfValidoComPontos() {
+		assertEquals(true, isCPF("946.220.360-10"));
+	}
+
+	@Test
+	void fazendoTesteDeCpfInvalidoComPontos() {
+		assertEquals(false, isCPF("946.220.360-11"));
+	}
+
+	@Test
+	void fazendoTesteDeCpfInvalidoComVirgula() {
+		assertEquals(false, isCPF("946,220.360-11"));
+	}
+
+	@Test
+	void fazendoTesteDeCpfInvalidoComEspacoNoFinal() {
+		assertEquals(true, isCPF("946.220.360-10 "));
+	}
+	
+	@Test
+	void fazendoTesteDeCpfInvalidoComEspacoNoComeco() {
+		assertEquals(true, isCPF(" 946.220.360-10"));
+	}
+	
+	@Test
+	void fazendoTesteDeCpfInvalidoComEspacoNoMeio() {
+		assertEquals(true, isCPF("946.220. 360-10"));
+	}
+
 	public boolean isCPF(String CPF) {
+		CPF = CPF.replace(".", "").replace("-", "").replace(" ", "");
+
 		if (CPF.equals("00000000000") ||
 				CPF.equals("11111111111") ||
 				CPF.equals("22222222222") || CPF.equals("33333333333") ||
