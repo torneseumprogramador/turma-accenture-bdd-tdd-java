@@ -19,8 +19,10 @@ public class Cliente {
   }
   
   public boolean validarCPF() {
+    if(this.cpf == null) return false;
+    
     String CPF = this.cpf;
-		CPF = CPF.replace(".", "").replace("-", "").replace(" ", "");
+		CPF = CPF.replaceAll("\\.|-| |[a-zA-Z]", "");
 
 		if (CPF.equals("00000000000") ||
 				CPF.equals("11111111111") ||
